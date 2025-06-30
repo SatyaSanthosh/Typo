@@ -92,7 +92,14 @@
 <script>
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const text = "GRAPHOS STUDIO";
+// Detect screen size and set line(s) accordingly
+let lines;
+if (window.innerWidth <= 768) {
+  lines = ["GRAPHOS", "STUDIO"]; // For mobile
+} else {
+  lines = ["GRAPHOS STUDIO"]; // For desktop
+}
+
 const fontSize = 90;
 const particles = [];
 let mouse = { x: null, y: null };
