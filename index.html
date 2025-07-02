@@ -85,7 +85,7 @@
 <body>
 
 <canvas id="canvas"></canvas>
-<a id="link" href="https://graphosiith.com" target="_blank">Graphosiith.com</a>
+<a id="link" href="https://graphosiith.com" target="_self">Graphosiith.com</a>
 <div id="orb"></div>
 <div id="hoverMsg">Click to explore</div>
 
@@ -269,8 +269,9 @@ canvas.addEventListener("mouseenter", () => {
 });
 
 canvas.addEventListener("click", () => {
-  window.open("https://graphosiith.com", "_blank");
+  window.location.href = "https://graphosiith.com";
 });
+
 
 canvas.addEventListener("touchmove", (e) => {
   const rect = canvas.getBoundingClientRect();
