@@ -83,13 +83,14 @@
 <div id="orb"></div>
 <div id="hoverMsg">Click to explore</div>
 <script>
-// ✅ Fix redirect loop: only redirect if coming directly (not from Wix)
-if (
-  !sessionStorage.getItem("visitedLanding") &&
-  !document.referrer.includes("wixsite.com")
-) {
+const referrer = document.referrer;
+const alreadyVisited = sessionStorage.getItem("visitedLanding");
+// Only redirect if:
+// 1. First visit (not in sessionStorage)
+// 2. Not coming from wixsite.com (which means not pressing back)
+if (!alreadyVisited && !referrer.includes("wixsite.com")) {
   sessionStorage.setItem("visitedLanding", "true");
-} else if (sessionStorage.getItem("visitedLanding") && !document.referrer.includes("wixsite.com")) {
+} else if (alreadyVisited && !referrer.includes("wixsite.com")) {
   window.location.href = "https://srikanthreddyravu2.wixsite.com/jcno";
 }
 const canvas = document.getElementById("canvas");
