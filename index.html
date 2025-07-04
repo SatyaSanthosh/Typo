@@ -83,16 +83,6 @@
 <div id="orb"></div>
 <div id="hoverMsg">Click to explore</div>
 <script>
-const referrer = document.referrer;
-const alreadyVisited = sessionStorage.getItem("visitedLanding");
-// Only redirect if:
-// 1. First visit (not in sessionStorage)
-// 2. Not coming from wixsite.com (which means not pressing back)
-if (!alreadyVisited && !referrer.includes("wixsite.com")) {
-  sessionStorage.setItem("visitedLanding", "true");
-} else if (alreadyVisited && !referrer.includes("wixsite.com")) {
-  window.location.href = "https://srikanthreddyravu2.wixsite.com/jcno";
-}
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 ctx.imageSmoothingEnabled = true;
