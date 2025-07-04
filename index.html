@@ -83,13 +83,14 @@
 <div id="orb"></div>
 <div id="hoverMsg">Click to explore</div>
 <script>
-  // 🔁 Prevent redirect loop using sessionStorage
-if (sessionStorage.getItem("visitedLanding")) {
-  // Already visited landing page in this session → go directly to homepage
-  window.location.href = "https://srikanthreddyravu2.wixsite.com/jcno";
-} else {
-  // First time visit → mark as visited
+// ✅ Fix redirect loop: only redirect if coming directly (not from Wix)
+if (
+  !sessionStorage.getItem("visitedLanding") &&
+  !document.referrer.includes("wixsite.com")
+) {
   sessionStorage.setItem("visitedLanding", "true");
+} else if (sessionStorage.getItem("visitedLanding") && !document.referrer.includes("wixsite.com")) {
+  window.location.href = "https://srikanthreddyravu2.wixsite.com/jcno";
 }
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
